@@ -3,7 +3,7 @@
 número con los dígitos en orden inverso: .
 """
 
-numero = input("Ingrese un Nro de 3 digitos: ")
+numero = input(" Ingrese un Nro de 3 digitos: ")
 
 if len(numero) == 3:
     nro_invertido = ""
