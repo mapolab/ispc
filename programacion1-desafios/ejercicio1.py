@@ -1,6 +1,6 @@
 """
 1- Escriba un programa que pida al usuario un entero de tres dígitos, y entregue el
-número con los dígitos en orden inverso:
+número con los dígitos en orden inverso: .
 """
 
 numero = input("Ingrese un Nro de 3 digitos: ")
