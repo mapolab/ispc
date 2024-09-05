@@ -31,8 +31,9 @@ class Reproductor:
             if cancion in self.__lista:
                 self.__reproducciendo = True
                 self.__cancion_actual = cancion
+                return True
             else:
-                raise ValueError("La cancion no esta en lista")
+                return False
         else:
             raise ValueError("El reproductor esta apagado")
 
@@ -42,21 +43,26 @@ class Reproductor:
         else:
             self.__reproducciendo = True
 
-    def siguiente_cancion(self):
+    def siguiente_cancion(self, posicion=1):
         nro_posiciones = len(self.__lista)
-        nro_posicion_actual = self.__lista.index(self.__cancion_actual) + 1
+        print("cantidad de posc:", nro_posiciones)
+        nro_posicion_actual = self.__lista.index(
+            self.__cancion_actual) + posicion
         if nro_posicion_actual < nro_posiciones:
+            print("pos actual:", self.__cancion_actual)
             self.__cancion_actual = self.__lista[nro_posicion_actual]
+            return True
         else:
+            # Si el nro de posiciones a adelantar esta fuera de rango volver al primer elemento
             self.__cancion_actual = self.__lista[0]
+            return False
 
+    def agregar_cancion(self, valor):
+        if valor in self.__lista:
+            raise ValueError("La cancion ya esta en lista")
+        else:
+            self.__lista.append(valor)
+            return True
 
-canciones = ["Enter Sandman", "Linkin Park", "Paranoid", "Eminem",
-             "Master of Puppets", "Painkiller", "Iron Man", "South of Heaven"]
-
-
-playlist = Reproductor(canciones)
-playlist.set_encedido(True)
-playlist.reproducir_cancion("Eminem")
-playlist.siguiente_cancion()
-print(playlist)
+    def mostrar_canciones(self):
+        return self.__lista
